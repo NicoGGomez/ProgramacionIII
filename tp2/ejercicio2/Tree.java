@@ -68,4 +68,30 @@ public class Tree {
         }
     }
 	
+	public void agregarValor(){
+		if (this.root == null) {
+			return;
+		}
+
+		agregarValor(this.root);
+	}
+
+	private int agregarValor(TreeNode nodo){
+		if (nodo == null) {
+			return -1;
+		}
+		
+		if (nodo.esHoja()) {
+			return nodo.getValue();
+		}
+		int valorIzq = agregarValor(nodo.getLeft());
+		int valorDer = agregarValor(nodo.getRight());
+
+		int valor = valorDer - valorIzq; // CLAVE
+
+		nodo.setValue(valor);
+
+		return valor;
+	}
+
 }

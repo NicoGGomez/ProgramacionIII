@@ -12,6 +12,15 @@ public class TreeNode {
 		this.right = null;
 	}
 
+	public boolean esHoja(){
+		if (this.getLeft().getValue() == null || 
+			this.getRight().getValue() == null){
+				return true;
+			}
+		return false;
+	}
+
+
 	public TreeNode getLeft() {
 		return left;
 	}
@@ -32,5 +41,8 @@ public class TreeNode {
 		return value;
 	}
 
+	public void setValue(int value) {
+		this.value = value;
+	}
 
 }
