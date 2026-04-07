@@ -1,4 +1,4 @@
-package ejercicio2;
+package tema2.tp1;
 
 import java.util.List;
 
@@ -92,6 +92,24 @@ public class Tree {
 		nodo.setValue(valor);
 
 		return valor;
+	}
+
+	public int sumarValores(TreeNode nodo){
+		if (nodo == null) {
+			return 0;
+		}
+		int suma = 0;
+		return sumarValores(nodo, suma);
+	}
+
+	private int sumarValores(TreeNode nodo, int suma){
+		if (nodo == null) {
+			return 0;
+		}
+		suma += nodo.getValue();
+		suma += sumarValores(nodo.getLeft(), suma);
+		suma += sumarValores(nodo.getRight(), suma);
+		return suma;
 	}
 
 }

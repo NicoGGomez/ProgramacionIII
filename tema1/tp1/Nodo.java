@@ -1,25 +1,24 @@
-package programacion3.tp1;
+package tema1.tp1;
 
-public class Node<T> {
+public class Nodo<T> {
+    private T info;
+	private Nodo<T> next;
 
-	private T info;
-	private Node<T> next;
-
-	public Node() {
+	public Nodo() {
 		this.info = null;
 		this.next = null;
 	}
 	
-	public Node(T info, Node<T> next) {
+	public Nodo(T info, Nodo<T> next) {
 		this.setInfo(info);
 		this.setNext(next);
 	}
 	
-	public Node<T> getNext() {
+	public Nodo<T> getNext() {
 		return next;
 	}
 
-	public void setNext(Node<T> next) {
+	public void setNext(Nodo<T> next) {
 		this.next = next;
 	}
 

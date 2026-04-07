@@ -1,4 +1,4 @@
-package ejercicio2;
+package tema2.tp1;
 
 public class TreeNode {
 
