@@ -80,13 +80,16 @@ public class GrafoDirigido<T> implements Grafo<T> {
 
 	@Override
 	public Iterator<Arco<T>> obtenerArcos() {
-		List<Arco>
+		List<Arco<T>> res = new ArrayList<>();
+		for (Vertice<T> v : vertices.values()) {
+			res.addAll(v.obtenerArcos());
+		}
+		return res.iterator();
 	}
 
 	@Override
 	public Iterator<Arco<T>> obtenerArcos(int verticeId) {
-		// TODO Auto-generated method stub
-		return null;
+		return getVertice(verticeId).obtenerArcos().iterator();
 	}
 
 	public Vertice<T> getVertice(int id) {
