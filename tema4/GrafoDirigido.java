@@ -9,6 +9,39 @@ public class GrafoDirigido<T> implements Grafo<T> {
 
     HashMap<Integer, Vertice<T>> vertices = new HashMap<>();
 
+	public int DFS(){
+		int tiempo = 0;
+		Iterator<Integer> it = obtenerVertices();
+
+		while (it.hasNext()) {
+			Vertice<T> v = getVertice(it.next());
+			v.setColor('B');
+		}
+
+		it = obtenerVertices();
+
+		while (it.hasNext()) {
+			Vertice<T> v = getVertice(it.next());
+			if (v.getColor() == 'B') {
+				DFS(tiempo, v);
+			} 
+		}
+
+		return tiempo;
+	}
+
+	public void DFS(int tiempo, Vertice<T> vertice){
+		vertice.setColor('A');
+		tiempo++;
+		vertice.setTiempoInicial(tiempo);
+
+		Iterator<Integer> it = obtenerAdyacentes(vertice.getId());
+
+		while (it.hasNext()) {
+			Vertice<T> v = getVertice(tiempo);
+		}
+	}
+
 	@Override
 	public void agregarVertice(int verticeId) {
 		vertices.put(verticeId, new Vertice<>(verticeId));
