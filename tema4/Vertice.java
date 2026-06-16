@@ -52,7 +52,6 @@ public class Vertice<T> {
     }
 
     return res;
-
   }
 
   public List<Arco<T>> obtenerArcos() {

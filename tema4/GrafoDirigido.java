@@ -39,7 +39,13 @@ public class GrafoDirigido<T> implements Grafo<T> {
 
 		while (it.hasNext()) {
 			Vertice<T> v = getVertice(tiempo);
+			if (v.getColor() == 'B') {
+				DFS(tiempo, vertice);
+			}
 		}
+
+		vertice.setColor('N');
+		vertice.setTiempoFinal(++tiempo);
 	}
 
 	@Override
