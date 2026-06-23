@@ -1,0 +1,233 @@
+
+
+# Nivel 1
+
+### 1. Cambio de monedas
+
+Tenés monedas de valores distintos y cantidad ilimitada de cada una.
+
+**Objetivo:** obtener un monto M usando la menor cantidad de monedas posible.
+
+Ejemplo:
+
+```
+Monedas = [100, 50, 10, 5, 1]
+Monto = 286
+
+Salida:
+[100,100,50,10,10,10,5,1]
+```
+
+---
+
+### 2. Mochila fraccionaria
+
+Cada objeto tiene:
+
+* peso
+* valor
+
+Podés llevar fracciones de un objeto.
+
+**Objetivo:** maximizar el valor transportado.
+
+---
+
+### 3. Asignación de actividades
+
+Tenés actividades con:
+
+* hora inicio
+* hora fin
+
+**Objetivo:** seleccionar la mayor cantidad de actividades sin superposición.
+
+Ejemplo:
+
+```
+(1,4)
+(3,5)
+(0,6)
+(5,7)
+(8,9)
+```
+
+---
+
+# Nivel 2
+
+### 4. Cargar camiones
+
+Tenés un camión con capacidad C y paquetes de distintos pesos.
+
+**Objetivo:** cargar la mayor cantidad posible de paquetes.
+
+Ejemplo:
+
+```
+Capacidad = 15
+
+Paquetes:
+1 2 3 5 7 8
+
+Salida:
+1 2 3 5
+```
+
+---
+
+### 5. Asignación de aulas
+
+Cada clase tiene:
+
+* inicio
+* fin
+
+**Objetivo:** determinar la cantidad mínima de aulas necesarias.
+
+Ejemplo:
+
+```
+(8,10)
+(9,11)
+(10,12)
+```
+
+Respuesta:
+
+```
+2 aulas
+```
+
+---
+
+### 6. Cubrir una ruta con estaciones
+
+Tenés estaciones de servicio ubicadas sobre una ruta.
+
+Un vehículo recorre como máximo K km con un tanque.
+
+**Objetivo:** minimizar la cantidad de paradas.
+
+Ejemplo:
+
+```
+Autonomía = 100 km
+
+Estaciones:
+50 80 140 220 310
+```
+
+---
+
+# Nivel 3
+
+### 7. Planificación de tareas
+
+Cada tarea tiene:
+
+* duración
+* fecha límite
+
+**Objetivo:** realizar la mayor cantidad posible antes de su deadline.
+
+Ejemplo:
+
+```
+T1 = (2,5)
+T2 = (1,2)
+T3 = (3,7)
+```
+
+---
+
+### 8. Minimizar retraso máximo
+
+Cada tarea tiene:
+
+* tiempo de ejecución
+* deadline
+
+**Objetivo:** ordenar las tareas para minimizar el retraso máximo.
+
+---
+
+### 9. Emparejamiento de equipos
+
+Tenés:
+
+* jugadores
+* camisetas
+
+Cada jugador necesita una talla mínima.
+
+**Objetivo:** asignar la mayor cantidad posible de camisetas.
+
+---
+
+# Nivel Examen
+
+### 10. Procesadores y tareas
+
+Tenés:
+
+* M procesadores
+* N tareas con duración
+
+**Objetivo:** minimizar el tiempo total de finalización.
+
+Ejemplo:
+
+```
+Procesadores = 3
+
+Tareas:
+8 7 6 5 4 3
+```
+
+Pista:
+
+* ordenar tareas de mayor a menor
+* asignar siempre al procesador menos cargado
+
+---
+
+### 11. Antenas de telefonía
+
+Cada antena cubre K km.
+
+Tenés ciudades ubicadas sobre una recta.
+
+**Objetivo:** instalar la menor cantidad de antenas.
+
+---
+
+### 12. Cobertura de intervalos
+
+Dado un conjunto de intervalos:
+
+```
+[1,4]
+[2,5]
+[3,6]
+[7,9]
+```
+
+**Objetivo:** elegir la menor cantidad de puntos que intersecten todos los intervalos.
+
+---
+
+## Los 4 greedy clásicos que más toman
+
+1. Selección de actividades.
+2. Cambio de monedas.
+3. Mochila fraccionaria.
+4. Asignación de tareas a procesadores.
+
+Si dominás esos cuatro y sabés justificar:
+
+* criterio de selección,
+* factibilidad,
+* solución,
+
+ya estás bastante cubierto para un parcial de Greedy.
