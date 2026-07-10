@@ -1,5 +1,51 @@
 package grafos.facu;
 
+/*
+
+public ... bfs(Grafo<T> g){
+    Iterator<Integer> it = g.obtVertices();
+
+    while(it.hasNext()){
+        Vertice<T> v = g.getVertice(it.next());
+        v.setColor('B');
+    }
+
+    it = g.obtVertices();
+
+    while(it.hasNext()){
+        Vertice<T> v = g.getVertice(it.next());
+
+        if(v.getColor() == 'B')
+            bfs(g, v);
+    }
+}
+
+private ... bfs(Grafo<T> g, Vertice<T> origen){
+    Queue<Vertice<T>> cola = new LinkedList<>();
+
+    origen.setColor('A');
+    cola.add(origen);
+
+    while(!cola.isEmpty()){
+        Vertice<T> act = cola.poll();
+
+        Iterator<Integer> vecinos = g.obtAdyacentes(act.getId());
+
+        while(vecinos.hasNext()){
+            Vertice<T> vecino = g.getVertice(vecinos.next());
+
+            if(vecino.getColor() == 'B'){
+                vecino.setColor('A');
+                cola.add(vecino);
+            }
+        }
+
+        act.setColor('N');
+    }
+}
+
+*/ 
+
 import java.util.Iterator;
 import java.util.concurrent.ArrayBlockingQueue;
 

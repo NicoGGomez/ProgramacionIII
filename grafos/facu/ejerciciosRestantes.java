@@ -2,6 +2,7 @@ package grafos.facu;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class ejerciciosRestantes<T> {
     
@@ -94,6 +95,117 @@ public class ejerciciosRestantes<T> {
 
         camino.remove(camino.size() - 1);
         actual.setColor('B');
+
+    }
+
+    // Ejercicio 5
+    // Escriba un algoritmo que dado un grafo G y un vértice v de dicho grafo, devuelva una lista con todos los vértices a partir de los cuales exista un camino en G que termine en v.
+
+    public ArrayList<Vertice<T>> caminoHastaVertice(GrafoDirigido<T> g, Vertice<T> v){
+
+        ArrayList<Vertice<T>> camino = new ArrayList<>();
+
+        Iterator<Integer> it = g.obtenerVertices();
+
+        while (it.hasNext()) {
+            Vertice<T> vertice = g.getVertice(it.next());
+            vertice.setColor('B');
+        }
+
+        it = g.obtenerVertices();
+
+        while (it.hasNext()) {
+            Vertice<T> vertice = g.getVertice(it.next());
+        
+            Iterator<Integer> aux = g.obtenerVertices();
+            while(aux.hasNext())
+                g.getVertice(aux.next()).setColor('B');
+
+            if (caminoHastaVertice(g, vertice, v))
+                camino.add(vertice);
+        }
+
+        return camino;
+
+    }
+
+    private boolean caminoHastaVertice(GrafoDirigido<T> g, Vertice<T> actual, Vertice<T> fin){
+        if (actual.equals(fin))
+            return true;
+
+        actual.setColor('A');
+
+        Iterator<Integer> vecinos = g.obtenerAdyacentes(actual.getId());
+
+        while (vecinos.hasNext()) {
+            Vertice<T> vecino = g.getVertice(vecinos.next());
+            if (vecino.getColor() == 'B') 
+                if (caminoHastaVertice(g, vecino, fin))
+                    return true;
+        }
+
+        actual.setColor('N');
+        return false;
+    }
+
+    // Ejercicio 6
+    // Supongamos que una ciudad se encuentra modelada mediante un grafo, donde cada nodo es una esquina, y las aristas representan las calles. Diseñe un algoritmo tal que dadas dos esquinas, devuelva el camino más corto entre ambas de manera de caminar la menor cantidad de cuadras posible.
+    public ArrayList<Vertice<T>> caminoMasCorto(GrafoDirigido<T> g, Vertice<T> esq1, Vertice<T> esq2){
+        ArrayList<Vertice<T>> camino = new ArrayList<>();
+        ArrayList<Vertice<T>> caminoMasCorto = new ArrayList<>();
+        
+        int niveles = 0;
+        ArrayBlockingQueue<Integer> fila = new ArrayBlockingQueue<>(niveles);
+
+        Iterator<Integer> it = g.obtenerVertices();
+        
+        while (it.hasNext()) {
+            Vertice<T> v = g.getVertice(it.next());
+            v.setColor('B');
+        }
+
+        caminoMasCorto(g, esq1, esq2, camino, caminoMasCorto, fila, niveles);        
+
+        return caminoMasCorto;
+
+    }
+
+    private void caminoMasCorto(GrafoDirigido<T> g, Vertice<T> esqAct, Vertice<T> esqFin, ArrayList<Vertice<T>> camino, ArrayList<Vertice<T>> caminoMasCorto, ArrayBlockingQueue<Integer> fila, int niveles){
+
+        esqAct.setColor('N');
+        fila.add(esqAct.getId());
+
+        int nivelActual = 1;
+        int sigNivel = 0;
+
+        while (!fila.isEmpty()) {
+            
+            for(int i = 0; i < nivelActual; i++){
+                int id = fila.poll();
+
+                Iterator<Integer> vecinos = g.obtenerAdyacentes(id);
+
+                while (vecinos.hasNext()) {
+                    Vertice<T> vecino = g.getVertice(vecinos.next());
+                    if (vecino.getColor() == 'B') {
+                        camino.add(esqAct);
+                        vecino.setColor('N');
+                        fila.add(vecino.getId());
+                        sigNivel++;
+                    }
+                }
+
+            }
+
+            if (sigNivel > 0) {
+                niveles++;
+                nivelActual = sigNivel;
+                sigNivel = 0;
+            } else {
+                break;
+            }
+
+        }
 
     }
 

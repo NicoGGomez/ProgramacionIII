@@ -1,5 +1,39 @@
 package grafos.facu;
 
+/*
+
+public ... dfs(grafo g){
+    iterator<Integer> it = g.obtVertices();
+    while(it.hasNext()){
+	    Vertice<T> v = g.getVertice(it.next());
+	    v.setColor('B');
+    }
+    
+    it = g.obtVertices();
+    
+    while(it.hasNext()){
+	    Vertice<T> v = g.getVertice(it.next());
+	    if(v.getColor() == 'B')
+		    dfs(g, v);
+    }
+}
+
+private ... dfs(grafo g, vertice act){
+    act.setColor('A');
+    
+    Iterator<Integer> vecinos = g.obtAdyacentes(act.getId());
+    
+    while(vecinos.hasNext()){
+	    Vertice<T> vecino = g.getVertice(vecinos.next());
+	    if(vecino.getColor() == 'B')
+		    dfs(g, vecino);
+    }
+    
+    act.setColor('N')
+}
+
+*/ 
+
 import java.util.Iterator;
 
 public class DFS {
