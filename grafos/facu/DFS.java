@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public class DFS {
     
-    public <T> void dfsvisit(GrafoDirigido<T> g){
+    public <T> void dfsRun(GrafoDirigido<T> g){
 
         Iterator<Integer> it = g.obtenerVertices();
 
@@ -18,12 +18,12 @@ public class DFS {
         while (it.hasNext()) {
             Vertice<T> v = g.getVertice(it.next());
             if (v.getColor() == 'B') 
-                dfsRun(g, v);
+                dfsVisit(g, v);
         }
 
     }
 
-    private <T> void dfsRun(GrafoDirigido<T> g, Vertice<T> actual){
+    private <T> void dfsVisit(GrafoDirigido<T> g, Vertice<T> actual){
 
         actual.setColor('A');
 
@@ -32,7 +32,7 @@ public class DFS {
         while (adyacentes.hasNext()) {
             Vertice<T> adyacente = g.getVertice(adyacentes.next());
             if (adyacente.getColor() == 'B')
-                dfsRun(g, adyacente);
+                dfsVisit(g, adyacente);
         }
 
         actual.setColor('N');
