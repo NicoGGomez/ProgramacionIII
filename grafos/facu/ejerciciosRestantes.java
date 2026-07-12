@@ -209,4 +209,53 @@ public class ejerciciosRestantes<T> {
 
     }
 
+    // Ejercicio 7
+    // Dado un grafo no orientado que modela las rutas de la provincia de Buenos Aires, devolver todos los caminos alternativos que se pueden tomar para ir desde la ciudad de Buenos Aires a la ciudad de Tandil, considerando que en el tramo Las Flores-Rauch está cortado al tránsito.
+    public ArrayList<ArrayList<Vertice<T>>> caminosAlternativos(GrafoDirigido<T> ciudades, Vertice<T> buenosAires, Vertice<T> tandil){
+
+        ArrayList<ArrayList<Vertice<T>>> caminos = new ArrayList<>();
+        ArrayList<Vertice<T>> camino = new ArrayList<>();
+
+        Iterator<Integer> it = ciudades.obtenerVertices();
+
+        while (it.hasNext()) {
+            Vertice<T> v = ciudades.getVertice(it.next());
+            v.setColor('B');
+        }
+
+        it = ciudades.obtenerVertices();
+
+        caminosAlternativos(ciudades, tandil, buenosAires, camino, caminos);
+
+        return caminos;
+
+    }
+
+    private void caminosAlternativos(GrafoDirigido<T> ciudades, Vertice<T> actual, Vertice<T> fin, ArrayList<Vertice<T>> camino, ArrayList<ArrayList<Vertice<T>>> caminos){
+
+        actual.setColor('A');
+        camino.add(actual);
+
+        if(actual.equals(fin)){
+            caminos.add(new ArrayList<>(camino));
+        }
+        else{
+            Iterator<Integer> vecinos = ciudades.obtenerAdyacentes(actual.getId());
+
+            while(vecinos.hasNext()){
+                Vertice<T> vecino = ciudades.getVertice(vecinos.next());
+
+                if(actual.obtenerArco(vecino.getId()).getEtiqueta().equals("Cortado"))
+                    continue;
+
+                if(vecino.getColor() == 'B')
+                    caminosAlternativos(ciudades, vecino, fin, camino, caminos);
+            }
+        }
+
+        camino.remove(camino.size()-1);
+        actual.setColor('B');
+
+    }
+
 }
